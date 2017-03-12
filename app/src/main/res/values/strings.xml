@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Skin</string>
+    <string name="content">this is app content</string>
+    <array name="tabs">
+        <item>换肤</item>
+        <item>动态修改皮肤</item>
+    </array>
+</resources>

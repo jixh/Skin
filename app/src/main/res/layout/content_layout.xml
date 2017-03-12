@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:skins="http://schemas.android.com/android/skins"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:background="@drawable/drawble_state_list"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="10dp"
+    skins:set="background"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_mipmap"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+            android:src="@mipmap/icon1"
+            skins:set="src" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="src 设置 mipmap"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_drawable"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/icon2"
+            skins:set="src" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="src 设置 drawable" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_drawble"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:drawableLeft="@drawable/icon1"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            skins:set="drawableLeft" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="textView 设置 drawableLeft"
+            skins:set="drawableLeft" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/ItemTitleText"
+        android:layout_marginTop="2dp"
+        android:text="textColor"
+        skins:set="textColor" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="textcolor ,background"
+        android:textColor="@color/item_tv_content_color"
+        android:background="@color/item_tv_title_background"
+        android:textSize="@dimen/size_content"
+        android:padding="10dp"
+        skins:set="textColor|background" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:hint="hint"
+        android:textColorHint="@color/item_tv_content_color"
+        android:textSize="14sp"
+        skins:set="textColorHint" />
+
+
+</LinearLayout>
