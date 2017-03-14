@@ -26,7 +26,7 @@
 
 1) 导入包
 ```
-
+   compile 'com.jktaihe.skinlibrary:skin:1.0.0'
 
 ```
 2) Application初始化
@@ -51,6 +51,13 @@
 
 3) 继承 SkinActivity,SKinFragment
 
+```
+
+    public class MainActivity extends SkinActivity {
+
+    }
+
+```
 4) xml或代码的方式设置要换肤view
 
 xml方式：
