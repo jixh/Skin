@@ -1,17 +1,19 @@
 
-#Android 主题换肤-给要换肤的view打标签
+Android 主题换肤-给要换肤的view打标签
+==
 给页面中需要的view设置标签来适配换肤
 
 
-##更新日志
+更新日志
+--
+
+效果图
+--
+ <img src="skin.gif" width = "230" height = "370" alt="图片名称"/>
 
 
-##效果图
-
-![Demo](skin.gif)
-
-
-##支持
+支持
+--
 
 1) 支持 textColor,textColorHint,background,src,drawableTop、drawableLeft、drawableRight、drawableBottom 属性的引用资源替换
 
@@ -22,10 +24,12 @@
 4) 动态下载皮肤包
 
 
-##使用步骤
-
+使用步骤
+--
 1) 导入包
-```
+
+```gradle
+
    compile 'com.jktaihe.skinlibrary:skin:1.0.0'
 
 ```
