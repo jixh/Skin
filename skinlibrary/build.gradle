@@ -1,8 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-
-version = "1.0.0-beta1"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -31,70 +27,30 @@ dependencies {
 }
 
 
-def siteUrl = 'https://github.com/jixh/Shin'      // 项目的主页
-def gitUrl = 'https://github.com/jixh/Shin.git'   // Git仓库的url
-group = "com.jktaihe.skin"
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'skinlibrary'
 
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                // Add your description here
-                name 'a solution of modifying Skin'    //项目描述
-                url siteUrl
-                // Set your license
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id 'jktaihe'       //填写开发者基本信息
-                        name 'jktaihe'
-                        email 'jktaihe@gmail.com'
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
+    publishedGroupId = 'com.jktaihe.skin'
+    libraryName = 'Skin'
+    artifact = 'skinlibrary'
+
+    libraryDescription = 'A solution of modifying skin on Android'
+
+    siteUrl = 'https://github.com/jixh/Skin'
+    gitUrl = 'https://github.com/jixh/Skin.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'jktaihe'
+    developerName = 'jktaihe'
+    developerEmail = 'jktaihe@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = "skin"    //发布到JCenter上的项目名字
-        websiteUrl = siteUrl
-        vcsUrl = gitUrl
-        licenses = ["Apache-2.0"]
-        publish = true
-    }
-}
+
+apply from: 'https://raw.githubusercontent.com/jixh/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/jixh/JCenter/master/bintrayv1.gradle'
+

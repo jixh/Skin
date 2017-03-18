@@ -30,7 +30,7 @@ Android 主题换肤-给要换肤的view打标签
 
 ```gradle
 
-   compile 'com.jktaihe.skinlibrary:skin:1.0.0'
+   compile 'com.jktaihe.skin:skinlibrary:1.0.0'
 
 ```
 2) Application初始化
@@ -107,7 +107,9 @@ xml方式：
 
 
 
-###自定义属性添加
+自定义属性添加
+--
+
 1) 继承 BaseAttr类 ，实现其方法
 
 ```
@@ -142,18 +144,75 @@ public class TabLayoutIndicatorAttr extends BaseAttr {
 
 3) 按 使用步骤 中第三步方式使用
 
-##LICENSE
+加载皮肤包
+--
 
-```html
-Copyright [2017] [jktaihe]
+1) 本地皮肤包加载  SkinManager.getInstance().loadSkin（皮肤包路径，SkinLoadListener）
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+```
+     SkinManager
+       .getInstance()
+       .loadSkin("skin_style.skin"
+                  ,new SkinLoadListener() {
+                        @Override
+                        public void onStart() {
+                            Log.i("SkinLoadListener", "正在切换中");
+                            dialog.show();
+                        }
+
+                        @Override
+                            public void onSuccess() {
+                            Log.i("SkinLoadListener", "切换成功");
+                            dialog.dismiss();
+                        }
+
+                        @Override
+                        public void onFailed(String errMsg) {
+                            Log.i("SkinLoadListener", "切换失败:" + errMsg);
+                            dialog.dismiss();
+                        }
+
+                        @Override
+                        public void onProgress(int progress) {
+                            Log.i("SkinLoadListener", "皮肤包下载中:" + progress);
+
+                        }
+                    }
+
+            );
+
+
+```
+
+2) 网络皮肤包加载  SkinManager.getInstance().loadSkinFromUrl（皮肤包路径，SkinLoadListener）
+
+```
+    SkinManager.getInstance().loadSkinFromUrl(skinUrl, new SkinLoadListener() {
+                        @Override
+                        public void onStart() {
+                            Log.i("SkinLoadListener", "开始切换中");
+                            dialog.setContent("正在从网络下载皮肤文件");
+                            dialog.show();
+                        }
+    
+                        @Override
+                        public void onSuccess() {
+                            Log.i("SkinLoadListener", "切换成功");
+                            dialog.dismiss();
+                        }
+    
+                        @Override
+                        public void onFailed(String errMsg) {
+                            Log.i("SkinLoadListener", "切换失败:" + errMsg);
+                            dialog.setContent("换肤失败:" + errMsg);
+                        }
+    
+                        @Override
+                        public void onProgress(int progress) {
+                            Log.i("SkinLoadListener", "皮肤包下载中:" + progress);
+                            dialog.setProgress(progress);
+                        }
+                    });
+
 
 ```
